@@ -1,78 +1,154 @@
-# Shopify App Template - Extension only
+# RS Checkout Fields - Shopify App Extensions
 
-This is a template for building an [extension-only Shopify app](https://shopify.dev/docs/apps/build/app-extensions/build-extension-only-app). It contains the basics for building a Shopify app that uses only app extensions.
+This repository contains a collection of Shopify app extensions designed to enhance the checkout experience for merchants. Each extension is modular and focuses on specific functionalities, such as adding custom fields, managing bundles, and providing localized content.
 
-This template doesn't include a server or the ability to embed a page in the Shopify Admin. If you want either of these capabilities, choose the [Remix app template](https://github.com/Shopify/shopify-app-template-remix) instead.
+## Overview
 
-Whether you choose to use this template or another one, you can use your preferred package manager and the Shopify CLI with [these steps](#installing-the-template).
+This project is built using Shopify's [extension-only app template](https://shopify.dev/docs/apps/build/app-extensions/build-extension-only-app). It includes multiple extensions, each serving a unique purpose to improve the checkout process for Shopify stores.
 
-## Benefits
+### Extensions
 
-Shopify apps are built on a variety of Shopify tools to create a great merchant experience. The [create an app](https://shopify.dev/docs/apps/getting-started/create) tutorial in our developer documentation will guide you through creating a Shopify app.
+1. **Additional Note**  
+   Adds a custom note field to the checkout process.  
+   - Main file: `src/Checkout.jsx`  
+   - Locales: `en.default.json`, `fr.json`
 
-This app template does little more than install the CLI and scaffold a repository.
+2. **Bundle Maker**  
+   Allows merchants to create and manage product bundles directly in the checkout.  
+   - Main file: `src/BlockExtension.jsx`  
+   - Utilities: `utils.js`  
+   - Hooks: `useBundleManager.js`  
+   - Locales: `en.default.json`, `fr.json`
 
-## Getting started
+3. **Country Selector**  
+   Provides a dropdown for customers to select their country during checkout.  
+   - Main file: `src/BlockExtension.jsx`  
+   - Utilities: `utils.js`  
+   - Hooks: `useCountriesManager.js`  
+   - Locales: `en.default.json`, `fr.json`
+
+4. **Country Selector Draft**  
+   A draft version of the Country Selector extension for testing and development purposes.  
+   - Main file: `src/BlockExtension.jsx`  
+   - Utilities: `utils.js`  
+   - Hooks: `useCountriesManager.js`  
+   - Locales: `en.default.json`, `fr.json`
+
+5. **Date Field**  
+   Adds a date picker field to the checkout process.  
+   - Main file: `src/Checkout.jsx`  
+   - Locales: `en.default.json`, `fr.json`
+
+6. **Fields**  
+   A generic extension for adding custom fields to the checkout.  
+   - Main file: `src/Checkout.jsx`  
+   - Locales: `en.default.json`, `fr.json`
+
+## Getting Started
 
 ### Requirements
 
-1. You must [download and install Node.js](https://nodejs.org/en/download/) if you don't already have it.
-1. You must [create a Shopify partner account](https://partners.shopify.com/signup) if you don’t have one.
-1. You must create a store for testing if you don't have one, either a [development store](https://help.shopify.com/en/partners/dashboard/development-stores#create-a-development-store) or a [Shopify Plus sandbox store](https://help.shopify.com/en/partners/dashboard/managing-stores/plus-sandbox-store).
+1. Install [Node.js](https://nodejs.org/en/download/).
+2. Create a [Shopify partner account](https://partners.shopify.com/signup).
+3. Set up a [development store](https://help.shopify.com/en/partners/dashboard/development-stores#create-a-development-store) or a [Shopify Plus sandbox store](https://help.shopify.com/en/partners/dashboard/managing-stores/plus-sandbox-store).
 
-### Installing the template
+### Installation
 
-This template can be installed using your preferred package manager:
+Clone the repository and install dependencies using your preferred package manager:
 
 Using yarn:
-
 ```shell
-yarn create @shopify/app
+yarn install
 ```
 
 Using npm:
-
 ```shell
-npm init @shopify/app@latest
+npm install
 ```
 
 Using pnpm:
-
 ```shell
-pnpm create @shopify/app@latest
+pnpm install
 ```
 
-This will clone the template and install the required dependencies.
+### Local Development
 
-#### Local Development
-
-[The Shopify CLI](https://shopify.dev/docs/apps/tools/cli) connects to an app in your Partners dashboard. It provides environment variables and runs commands in parallel.
-
-You can develop locally using your preferred package manager. Run one of the following commands from the root of your app.
+Use the [Shopify CLI](https://shopify.dev/docs/apps/tools/cli) to connect to your app in the Shopify Partners dashboard. Run the following command to start local development:
 
 Using yarn:
-
 ```shell
 yarn dev
 ```
 
 Using npm:
-
 ```shell
 npm run dev
 ```
 
 Using pnpm:
-
 ```shell
 pnpm run dev
 ```
 
-Open the URL generated in your console. Once you grant permission to the app, you can start development (such as generating extensions).
+Open the URL generated in your console to preview the app extensions.
 
-## Developer resources
+## Project Structure
 
-- [Introduction to Shopify apps](https://shopify.dev/docs/apps/getting-started)
-- [App extensions](https://shopify.dev/docs/apps/build/app-extensions)
-- [Extension only apps](https://shopify.dev/docs/apps/build/app-extensions/build-extension-only-app)
+```
+extensions/
+├── additional-note/
+│   ├── src/
+│   │   └── Checkout.jsx
+│   ├── locales/
+│   │   ├── en.default.json
+│   │   └── fr.json
+├── bundle-maker/
+│   ├── src/
+│   │   ├── BlockExtension.jsx
+│   │   ├── utils.js
+│   │   └── hooks/
+│   │       └── useBundleManager.js
+│   ├── locales/
+│   │   ├── en.default.json
+│   │   └── fr.json
+├── country-selector/
+│   ├── src/
+│   │   ├── BlockExtension.jsx
+│   │   ├── utils.js
+│   │   └── hooks/
+│   │       └── useCountriesManager.js
+│   ├── locales/
+│   │   ├── en.default.json
+│   │   └── fr.json
+├── country-selector-draft/
+│   ├── src/
+│   │   ├── BlockExtension.jsx
+│   │   ├── utils.js
+│   │   └── hooks/
+│   │       └── useCountriesManager.js
+│   ├── locales/
+│   │   ├── en.default.json
+│   │   └── fr.json
+├── date-field/
+│   ├── src/
+│   │   └── Checkout.jsx
+│   ├── locales/
+│   │   ├── en.default.json
+│   │   └── fr.json
+├── fields/
+│   ├── src/
+│   │   └── Checkout.jsx
+│   ├── locales/
+│   │   ├── en.default.json
+│   │   └── fr.json
+```
+
+## Developer Resources
+
+- [Shopify App Development](https://shopify.dev/docs/apps/getting-started)
 - [Shopify CLI](https://shopify.dev/docs/apps/tools/cli)
+- [App Extensions](https://shopify.dev/docs/apps/build/app-extensions)
+
+## License
+
+This project is licensed under the terms of the MIT license.
